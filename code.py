@@ -22,4 +22,10 @@ result = sum / n-1
 standard_deviation = math.sqrt(result)  
 print(standard_deviation)
 print(mean)
-
+import pandas as pd
+import plotly.express as px
+df = pd.read_csv("data.csv")
+fig = px.scatter(df, x="Student Number", y="Marks" )
+fig.update_layout(shapes=[ dict( type= 'line', y0= mean, y1= mean, x0= 0, x1= n ) ])
+fig.update_yaxes(rangemode="tozero")
+fig.show()
